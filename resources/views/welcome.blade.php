@@ -39,28 +39,6 @@
 </head>
 
 <body>
-    {{-- @if (Route::has('login'))
-        <nav class="-mx-3 flex flex-1 justify-end">
-            @auth
-                <a href="{{ url('/dashboard') }}"
-                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Dashboard
-                </a>
-            @else
-                <a href="{{ route('login') }}"
-                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                    Log in
-                </a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
-                        Register
-                    </a>
-                @endif
-            @endauth
-        </nav>
-    @endif --}}
     <div id="graph"></div>
     <a href="#navbar" id="go-to-top" class="bg-primary fa-bounce pc-hide hide-comp"><i
             class="fa-solid fa-angles-up"></i></a>
@@ -88,6 +66,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact Me</a>
                     </li>
+                    @if (Route::has('login'))
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Log In</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                                </li>
+                            @endif
+                        @endauth
+                    @endif
                 </ul>
                 <form class="d-flex my-2 my-lg-0">
                     <!-- <input class="form-control me-sm-2" type="text" placeholder="Search">
@@ -182,23 +176,33 @@
                     <section class="hero-content">
                         <h2 class="text-uppercase"><i class="fa-solid fa-terminal"></i> Contact Me</h2>
                         <pre class="cmd"><span class="text-warning">&gt;</span> <a href="mailto:hindsbhk@outlook.com" class="text-decoration-none d-inline text-info">hindsbhk@outlook.com</a></pre>
-                        <form action="">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" name="email" id="email"
-                                    placeholder="">
-                                <label for="email">Your Email Address</label>
-                            </div>
+                        <form @auth action="{{ route('contact') }}" method="POST" @endauth>
+                            @auth
+                                @csrf
+
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="" value="{{ auth()->user()->email }}" required>
+                                    <label for="email">Your Email Address</label>
+                                </div>
+                            @endauth
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="subject" id="subject"
-                                    placeholder="">
+                                    placeholder="" required>
                                 <label for="subject">Subject</label>
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control" name="message" id="message" rows="5" placeholder=""></textarea>
+                                <textarea class="form-control" name="body" id="body" rows="5" placeholder="" required></textarea>
                             </div>
-                            <div>
-                                <button type="submit" class="text-uppercase"><i class="fa-solid fa-paper-plane"></i>
-                                    Send</button>
+                            <div class="mt-3">
+                                @auth
+                                    <button type="submit" class="text-uppercase"><i class="fa-solid fa-paper-plane"></i>
+                                        Send</button>
+                                @else
+                                    <a href="{{ route('login') }}" type="button"
+                                        class="submit-form text-uppercase d-inline-block"><i
+                                            class="fa-solid fa-paper-plane"></i> Login To Send Message</a>
+                                @endauth
                             </div>
                         </form>
                     </section>
