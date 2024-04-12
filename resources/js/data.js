@@ -29,16 +29,9 @@ export const frameworks = {
     uikit: { icon: ["fa-brands", "fa-uikit"], name: "UiKit", level: 5 },
     bs: { icon: ["fa-brands", "fa-bootstrap"], name: "Bootstrap", level: 5 },
     react: { icon: ["fa-brands", "fa-react"], name: "React", level: 2 },
-    reactNative: {
-        icon: ["fa-brands", "fa-react"],
-        name: "React Native",
-        level: 2,
-    },
-    tailwind: {
-        icon: ["fa-brands", "fa-tailwind"],
-        name: "Tailwind",
-        level: 5,
-    },
+    reactNative: {icon: ["fa-brands", "fa-react"],name: "React Native",level: 2},
+    nextJs: { icon: ["fa-brands", "fa-node-js"], name: "Next JS", level: 2 },
+    tailwind: { icon: ["fa-brands", "fa-tailwind"], name: "Tailwind",level: 5 },
 };
 
 export const projects = [
