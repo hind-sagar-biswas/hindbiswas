@@ -171,7 +171,7 @@ export const projects = [
         project_link: "http://coderaptors.epizy.com/c/",
         source_code_link: "https://github.com/hind-sagar-biswas/c-made-easy",
         image: null,
-        status: "under dev",
+        status: "alpha",
         title: "C Made Easy",
         description:
             "Cheatsheet, MCQ Tests, begginer to intermediate problems and Online compiler for C programmers.",

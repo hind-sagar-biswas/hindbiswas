@@ -12,6 +12,17 @@ class SkillSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $data = [
+            "UI/UX Design",
+            "Database Design",
+            "Critical Thinking",
+            "Problem Solving",
+            "Fluent English",
+        ];
+        foreach ($data as $skill) {
+            \App\Models\Skill::create([
+                'name' => $skill
+            ]);
+        }
     }
 }
