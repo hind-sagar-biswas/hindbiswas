@@ -21,9 +21,14 @@ class ContactHindController extends Controller
         $data['remote_addr'] = $request->ip();
         $data['http_x_forwarded_for'] = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? null;
 
+        $lastContactMail = ContactHind::where('user_id', auth()->id())->orWhere('remote_addr', $data['remote_addr'])->orderBy('created_at', 'desc')?->first();
+        if ($lastContactMail && now()->diffInMinutes($lastContactMail->created_at) < 5) {
+            return view('contact_output', ['title' => 'Too soon!', 'message' => 'Please wait 5 minutes before sending another message.']);
+        }
+
         $contactMessage = ContactHind::create($data);
         Mail::send(new MailContactHind($contactMessage));
 
-        return redirect('/')->with('success', 'Your message has been sent!');
+        return view('contact_output', ['title' => 'Success!', 'message' => 'Message sent successfully!']);
     }
 }

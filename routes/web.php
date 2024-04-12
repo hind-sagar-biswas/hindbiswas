@@ -5,7 +5,7 @@ use App\Http\Controllers\ContactHindController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -16,5 +16,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('/contact', function () {
+       return view('contact_output', ['title' => 'Success!', 'message' => 'Message sent successfully!']); 
+    });
     Route::post('/contact', [ContactHindController::class, 'contact'])->name('contact');
 });

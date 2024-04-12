@@ -1,0 +1,210 @@
+html {
+	scroll-behavior: initial;
+	scroll-snap-type: mandatory;
+}
+
+body {
+	background-color: $grey_900;
+	color: $grey_300;
+	scroll-snap-type: y mandatory;
+}
+
+li {
+	list-style-type: none;
+}
+
+@for $i from 1 to 7 {
+	h#{$i} {
+		text-transform: uppercase;
+	}
+}
+
+// TEXT COLORS
+@each $name, $color in $colors {
+	.text-#{$name} {
+		color: $color;
+	}
+	.border-#{$name} {
+		border-color: $color;
+	}
+	.bg-#{$name} {
+		background-color: $color !important;
+	}
+}
+
+// FORM
+form {
+	button[type="submit"],
+	a[type="button"] {
+		border: 2px solid $primary_0;
+		background-color: transparent;
+
+		padding: 10px 30px;
+		color: $primary_0;
+		outline: none;
+
+		&:hover,
+		&:focus {
+			color: $grey_900;
+			background-color: $primary_0;
+		}
+	}
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	color: $grey_300;
+	background-color: transparent;
+	border: 2px solid $grey_200;
+	border-radius: 0;
+
+	&:focus {
+		color: $grey_300;
+		background-color: $grey_800;
+		border-color: $primary_0;
+		outline: 0;
+	}
+}
+
+.scroll-target {
+	transition: 0.3s all ease-out;
+}
+
+.hide-comp {
+	opacity: 0;
+}
+
+.divider {
+	width: 100%;
+	border: 2px solid $grey_500;
+	border-color: transparent;
+	border-radius: 5px;
+	margin: 20px;
+	margin-inline: 2px;
+}
+
+// BACKGROUND GRAPHH STYLING
+#graph {
+	z-index: -1;
+	pointer-events: none;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100svw;
+	height: 100svh;
+}
+
+.row {
+	display: flex;
+}
+
+.cell {
+	width: calc(100svw / $col);
+	height: calc(100svh / $row);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	pointer-events: none;
+
+	opacity: 0.5;
+}
+
+.blocked {
+	background-color: darken($grey_900, 3%);
+}
+
+.link-buttons,
+.project-links {
+	width: 100%;
+	gap: 5px;
+
+	.link-btn {
+		text-decoration: none;
+		display: block;
+		padding: 5px 15px;
+		background-color: transparent;
+		color: $grey_100;
+		border: 1px solid $grey_100;
+		font-weight: normal;
+		text-transform: uppercase;
+		transition: all 0.3s ease-out;
+
+		&:hover {
+			background-color: $grey_100;
+			background: rgb(115, 236, 162);
+			background: linear-gradient(
+				90deg,
+				rgba(0, 255, 255, 1) 0%,
+				rgba(0, 212, 255, 1) 100%
+			);
+			color: $grey_900;
+			border-color: transparent;
+		}
+	}
+}
+
+#skill-list {
+	opacity: 1;
+	transition: all 0.4s;
+}
+.skill {
+	padding: 5px 10px 5px 20px;
+	margin-bottom: 5px;
+	background-color: $warning_0;
+	color: $grey_900 !important;
+	border-radius: 10px 0 10px 0;
+
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+#skill-list.hide {
+	opacity: 0;
+}
+
+#language-list {
+	#langs,
+	#frameworks {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 10px;
+
+		margin-top: 10px;
+		padding: 10px;
+		min-height: 100px;
+		border-left: 2px solid $grey_300;
+		position: relative;
+
+		&::before {
+			position: absolute;
+			top: 50%;
+			left: -17px;
+			transform-origin: center;
+			transform: translate(-50%, -50%) rotate(-90deg);
+			color: $warning_0;
+		}
+
+		.tag {
+			display: block;
+			padding: 5px 10px;
+			background-color: $success_0;
+			color: $grey_900;
+		}
+	}
+
+	#langs::before {
+		content: "languages";
+	}
+	#frameworks::before {
+		content: "frameworks";
+	}
+}

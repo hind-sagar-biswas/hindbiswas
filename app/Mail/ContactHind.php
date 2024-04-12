@@ -40,7 +40,7 @@ class ContactHind extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.contact',
+            view: 'emails.contact',
             with: [
                 'contact' => $this->contactHind,
             ],

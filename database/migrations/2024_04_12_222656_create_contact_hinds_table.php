@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contact_hinds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->default(null)->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->string('http_x_forwarded_for', 50)->nullable();
             $table->string('remote_addr', 50)->nullable();
             $table->string('email');

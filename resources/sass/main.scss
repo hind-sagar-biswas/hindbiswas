@@ -1,0 +1,17 @@
+$row: 23;
+$col: 45;
+$layers: 4;
+$social_links: 4;
+
+@use "sass:math";
+
+@import "variables";
+@import "mixins";
+@import "carousal";
+@import "scrollbar";
+@import "general";
+@import "profile";
+@import "hero";
+@import "media.pc";
+@import "media.mobile";
+@import "animations";

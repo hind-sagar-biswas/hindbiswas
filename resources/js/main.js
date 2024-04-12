@@ -5,6 +5,9 @@ import { graphNode, DFS, generate, screenWidth } from "./maze";
 import { revealSets, socialScrollSpy } from "./scrollspy";
 import { typeWriterRepeat } from "./typewriter";
 
+import "../sass/ext.scss";
+import "../sass/main.scss";
+
 function listSkills(skillList) {
     const skillListContainer = document.getElementById("skill-list");
     for (let index = 0; index < skillList.length; index++) {

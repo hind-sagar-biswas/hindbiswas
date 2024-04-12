@@ -7,14 +7,14 @@
     <title>Hind Sagar Biswas | Portfolio</title>
 
     <!-- Fontawesome 5 -->
-    <script src="https://kit.fontawesome.com/c9fec141b0.js" crossorigin="anonymous"></script>
+    {{-- <script src="https://kit.fontawesome.com/c9fec141b0.js" crossorigin="anonymous"></script> --}}
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    @vite(['resources/css/main.css', 'resources/js/main.js'])
+    @vite(['resources/js/main.js'])
 
     <meta name="description" content="Welcome to my portfolio">
     <meta name="keywords" content="tool, design, design trends, CSS generator, web design" />
@@ -180,17 +180,26 @@
                             @auth
                                 @csrf
 
+                                @error('body')
+                                    <p class="text-sm text-danger">{{ $message }}</p>
+                                @enderror
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" name="email" id="email"
                                         placeholder="" value="{{ auth()->user()->email }}" required>
                                     <label for="email">Your Email Address</label>
                                 </div>
                             @endauth
+                            @error('body')
+                                <p class="text-sm text-danger">{{ $message }}</p>
+                            @enderror
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="subject" id="subject"
                                     placeholder="" required>
                                 <label for="subject">Subject</label>
                             </div>
+                            @error('body')
+                                <p class="text-sm text-danger">{{ $message }}</p>
+                            @enderror
                             <div class="mb-3">
                                 <textarea class="form-control" name="body" id="body" rows="5" placeholder="" required></textarea>
                             </div>
