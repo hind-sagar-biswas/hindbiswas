@@ -34,13 +34,14 @@ class PortfolioDataApiController extends Controller
         return $data;
     }
 
-    protected function formatProject(Project $project, $full = false): array
+    protected function formatProject(Project $project, $full = true): array
     {
         return [
             'id' => $project->id,
             'cmd' => $project->cmd,
             'type' => $project->type,
             'title' => $project->title,
+            'tags' => $project->tags,
             'status' => $project->status->value,
             'description' => $project->description,
             'project_link' => $project->project_link,
@@ -50,7 +51,7 @@ class PortfolioDataApiController extends Controller
         ];
     }
 
-    protected function formatProjects(Collection $projectCollection, $full = false): array
+    protected function formatProjects(Collection $projectCollection, $full = true): array
     {
         $data = [];
         foreach ($projectCollection as $project) {

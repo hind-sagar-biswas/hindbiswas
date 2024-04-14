@@ -128,7 +128,7 @@ typeWriterRepeat(
     "UI/UX Designer"
 );
 
-addProjects(projects, { ...languages, ...frameworks });
+addProjects();
 
 window.addEventListener("load", () => {
     // Executions: MAZE
