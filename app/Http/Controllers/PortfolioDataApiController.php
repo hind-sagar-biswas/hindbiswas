@@ -62,7 +62,7 @@ class PortfolioDataApiController extends Controller
 
     public function skills(): JsonResponse
     {
-        return response()->json(Skill::pluck('name')->toArray());
+        return ApiResponse::json(Skill::pluck('name')->toArray());
     }
 
     public function learnables(Request $request): JsonResponse

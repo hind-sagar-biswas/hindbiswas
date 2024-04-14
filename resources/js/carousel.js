@@ -109,7 +109,7 @@ export function generateTemplate(index, data) {
 async function getProjectsData() {
     try {
         const response = await window.axios.get("/api/project/all");
-        console.log(response.data);
+        console.log(response.data.data);
         return response.data.data.data;
     } catch (error) {
         console.error("Failed to Fetch Projects");

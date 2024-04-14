@@ -1,6 +1,6 @@
 import "./bootstrap";
 import { addProjects } from "./carousel";
-import { projects, languages, skillList, frameworks } from "./data";
+import { languages, skillList, frameworks } from "./data";
 import { graphNode, DFS, generate, screenWidth } from "./maze";
 import { revealSets, socialScrollSpy } from "./scrollspy";
 import { typeWriterRepeat } from "./typewriter";
@@ -8,7 +8,20 @@ import { typeWriterRepeat } from "./typewriter";
 import "../sass/ext.scss";
 import "../sass/main.scss";
 
-function listSkills(skillList) {
+async function getSkillList() {
+    try {
+        const response = await window.axios.get("/api/skill/all");
+        console.log(response.data);
+        return response.data.data.data;
+    } catch (error) {
+        console.error("Failed to Fetch Skills");
+        console.error(error);
+        return [];
+    }
+}
+
+async function listSkills() {
+    const skillList = await getSkillList();
     const skillListContainer = document.getElementById("skill-list");
     for (let index = 0; index < skillList.length; index++) {
         setTimeout(() => {
