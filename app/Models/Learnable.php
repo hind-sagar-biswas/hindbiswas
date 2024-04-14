@@ -15,6 +15,7 @@ class Learnable extends Model
 
     protected $casts = [
         'group' => LearnableGroup::class,
+        'icon' => 'array',
     ];
 
     public function languageType(): BelongsTo
