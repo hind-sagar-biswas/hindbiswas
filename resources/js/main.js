@@ -1,6 +1,5 @@
 import "./bootstrap";
 import { addProjects } from "./carousel";
-import { languages, skillList, frameworks } from "./data";
 import { graphNode, DFS, generate, screenWidth } from "./maze";
 import { revealSets, socialScrollSpy } from "./scrollspy";
 import { typeWriterRepeat } from "./typewriter";
@@ -15,6 +14,18 @@ async function getSkillList() {
         return response.data.data.data;
     } catch (error) {
         console.error("Failed to Fetch Skills");
+        console.error(error);
+        return [];
+    }
+}
+
+async function getLearnableList(group) {
+    try {
+        const response = await window.axios.get(`/api/learnable/group/${group}`);
+        console.log(response.data);
+        return response.data.data.data;
+    } catch (error) {
+        console.error(`Failed to Fetch ${group}`);
         console.error(error);
         return [];
     }
@@ -43,7 +54,8 @@ async function listSkills() {
     }
 }
 
-function listLanguages(languages, target) {
+async function listLanguages(target) {
+    const languages = await getLearnableList('language');
     return new Promise((resolve, reject) => {
         const languageContainer = document.createElement("div");
         languageContainer.id = "langs";
@@ -85,7 +97,8 @@ function listLanguages(languages, target) {
     });
 }
 
-function listFrameworks(frameworks, target) {
+async function listFrameworks(target) {
+    const frameworks = await getLearnableList('framework');
     const frameworkContainer = document.createElement("div");
     frameworkContainer.id = "frameworks";
     target.appendChild(frameworkContainer);
@@ -115,10 +128,10 @@ function listFrameworks(frameworks, target) {
     }
 }
 
-function listLanguagesAndFrameworks(languages, frameworks) {
+function listLanguagesAndFrameworks() {
     const listContainer = document.getElementById("language-list");
-    listLanguages(languages, listContainer).then(() => {
-        listFrameworks(frameworks, listContainer);
+    listLanguages(listContainer).then(() => {
+        listFrameworks(listContainer);
     });
 }
 
@@ -153,9 +166,9 @@ window.addEventListener("load", () => {
     // Others
     socialScrollSpy("first-section", "scroll-target");
     revealSets("skill-list", "skills", () => {
-        listSkills(skillList);
+        listSkills();
     });
     revealSets("language-list", "languages", () => {
-        listLanguagesAndFrameworks(languages, frameworks);
+        listLanguagesAndFrameworks();
     });
 });
