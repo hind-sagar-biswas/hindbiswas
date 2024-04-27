@@ -18,10 +18,20 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update(User $user, array $input): void
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:100'],
+            'bio' => ['nullable', 'string', 'max:255'],
             'address' => ['nullable', 'string', 'max:255'], 
-            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'phone' => ['nullable', 'string', 'max:20'],
+            'email' => ['required', 'email', 'max:100', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+
+            'website' => ['nullable', 'string', 'max:255'],
+            'linkedin' => ['nullable', 'string', 'max:255'],
+            'facebook' => ['nullable', 'string', 'max:255'],
+            'instagram' => ['nullable', 'string', 'max:255'],
+            'twitter' => ['nullable', 'string', 'max:255'],
+            'github' => ['nullable', 'string', 'max:255'],
+
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {
@@ -34,8 +44,17 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         } else {
             $user->forceFill([
                 'name' => $input['name'],
+                'bio' => $input['bio'],
                 'address' => $input['address'],
+                'phone' => $input['phone'],
                 'email' => $input['email'],
+
+                'website' => $input['website'],
+                'linkedin' => $input['linkedin'],
+                'facebook' => $input['facebook'],
+                'instagram' => $input['instagram'],
+                'twitter' => $input['twitter'],
+                'github' => $input['github'],
             ])->save();
         }
     }
@@ -49,9 +68,18 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         $user->forceFill([
             'name' => $input['name'],
+            'bio' => $input['bio'],
             'address' => $input['address'],
+            'phone' => $input['phone'],
             'email' => $input['email'],
             'email_verified_at' => null,
+
+            'website' => $input['website'],
+            'linkedin' => $input['linkedin'],
+            'facebook' => $input['facebook'],
+            'instagram' => $input['instagram'],
+            'twitter' => $input['twitter'],
+            'github' => $input['github'],
         ])->save();
 
         $user->sendEmailVerificationNotification();
