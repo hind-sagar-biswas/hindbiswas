@@ -1,0 +1,46 @@
+on:
+  push:
+    branches: ["main", "UI_CHANGES"]
+
+name: 🚀 Deployment
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ftp.meditagbd.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
+
+      - name: 🔓 SSH into Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd public_html/
+            composer install --no-dev
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
+            php artisan key:generate 
+            php artisan cache:clear
+            php artisan optimize:clear
+            php artisan route:cache
+            php artisan storage:link
+            chmod -R 777 storage bootstrap/cache
+            php artisan migrate:fresh --seed
+            npm install
+            npm run build
