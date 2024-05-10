@@ -10,11 +10,6 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
-
-      - name: Setup PHP with PECL extension
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.2"
        
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -41,6 +36,11 @@ jobs:
 
       - name: 🏗️ Build JS and CSS
         run: npm run build 
+
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
