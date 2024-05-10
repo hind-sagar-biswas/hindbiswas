@@ -30,15 +30,6 @@ jobs:
       - name: 🔑 Generate App Key
         run: php artisan key:generate
 
-      - name: 🗑️ Clear Cashe
-        run: php artisan cache:clear
-
-      - name: 🗑️ Clear Optimizations
-        run: php artisan optimize:clear
-
-      - name: Optimize Routes
-        run: php artisan route:cache
-
       - name: 🗑️ Remove vendor folder
         run: rm -rf vendor
 
@@ -69,4 +60,7 @@ jobs:
           script: |
             cd public_html/
             php artisan storage:link
+            php artisan cache:clear
+            php artisan optimize:clear
+            php artisan route:cache
             php artisan migrate:fresh --seed
