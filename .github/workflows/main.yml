@@ -38,6 +38,9 @@ jobs:
 
       - name: 🏗️ Build JS and CSS
         run: npm run build 
+      
+      - name: Remove Vendor
+        run: rm -rf vendor
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
