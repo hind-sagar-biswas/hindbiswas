@@ -16,10 +16,11 @@ export default defineConfig({
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "resources"),
-            "~fontawesome": path.resolve(
+            "~fa": path.resolve(
                 __dirname,
                 "node_modules/@fortawesome/fontawesome-free"
             ),
+            "~bs": path.resolve(__dirname, "node_modules/bootstrap"),
         },
     },
 });

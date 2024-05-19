@@ -15,24 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('address')->nullable();
-            $table->boolean('is_admin')->default(false);
-            $table->boolean('is_banned')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
-
-            $table->string('phone')->nullable();
-            $table->string('website')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('github')->nullable();
-            $table->text('bio')->nullable();
-
             $table->timestamps();
         });
 

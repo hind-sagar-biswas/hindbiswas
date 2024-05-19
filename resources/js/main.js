@@ -1,4 +1,9 @@
 import "./bootstrap";
+
+import "~bs/dist/js/bootstrap.js";
+
+import.meta.glob(["../images/**"]);
+
 import { addProjects } from "./carousel";
 import { graphNode, DFS, generate, screenWidth } from "./maze";
 import { revealSets, socialScrollSpy } from "./scrollspy";
@@ -6,6 +11,7 @@ import { typeWriterRepeat } from "./typewriter";
 
 import "../sass/ext.scss";
 import "../sass/main.scss";
+
 
 async function getSkillList() {
     try {

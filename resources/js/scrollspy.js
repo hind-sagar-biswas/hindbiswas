@@ -32,6 +32,22 @@ export function revealSets(setId, name, lister) {
 	const writeTarget = document.getElementById(`${name}-cmd`);
 	const viewRect = writeTarget.getBoundingClientRect();
 
+	window.addEventListener("load", () => {
+        let position =
+            viewRect.top -
+            writeTarget.offsetTop -
+            window.screen.height / 2 -
+            window.scrollY;
+        if (
+            position <= writeTarget.offsetTop &&
+            !writeTarget.classList.contains("revealed")
+        ) {
+            typeWriter(`${name}-cmd`, `list --user ${name}`, () => {
+                reveal(document.getElementById(setId)).then(lister);
+            });
+            writeTarget.classList.add("revealed");
+        }
+    });
 	window.addEventListener("scroll", () => {
 		let position =
 			viewRect.top -

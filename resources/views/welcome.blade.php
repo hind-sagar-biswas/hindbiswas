@@ -9,33 +9,33 @@
     <!-- Fontawesome 5 -->
     {{-- <script src="https://kit.fontawesome.com/c9fec141b0.js" crossorigin="anonymous"></script> --}}
 
-    <!-- Latest compiled and minified CSS -->
+    {{-- <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Latest compiled JavaScript --> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> --}}
     @vite(['resources/js/main.js'])
 
-    <meta name="description" content="Welcome to my portfolio">
-    <meta name="keywords" content="tool, design, design trends, CSS generator, web design" />
+    <meta name="description" content="Welcome to my portfolio, where I showcase my programming skills and works">
+    <meta name="keywords" content="portfolio, hind, biswas, programmer, web developer" />
     <meta name="author" content="Hind Sagar Biswas">
     <meta name="twitter:title" content="Welcome to my portfolio where I brag my skills and works" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Hind Sagar Biswas - Portfolio" />
-    <meta property="og:url" content="https://hind-sagar-biswas.github.io/portfolio/" />
+    <meta property="og:url" content="https://hindbiswas.com/" />
     <meta property="og:title" content="Welcome to my portfolio where I brag my skills and works" />
-    <link rel="manifest" href="{{ url('images/hind-biwas.png') }}">
+    <link rel="manifest" href="{{ Vite::asset('resources/images/hind-biswas.webp') }}"> 
     <meta name="msapplication-TileColor" content="#1f2933" />
     <meta name="theme-color" content="#1f2933" />
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="128x128" href="{{ url('images/favicon_128.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('images/favicon_32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('images/favicon.png') }}">
-    <link rel="manifest" href="{{ url('images/site.webmanifest') }}">
+    <link rel="icon" type="image/png" sizes="128x128" href="{{ Vite::asset('resources/images/favicon_128.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ Vite::asset('resources/images/favicon_32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('resources/images/favicon.png') }}">
+    {{-- <link rel="manifest" href="{{ Vite::asset('resources/images/site.webmanifest') }}"> --}}
     <meta name="msapplication-TileImage" content="assetsimages/favicon.ico">
     <!-- Windows 8 -->
-    <!--[if IE]><link rel="shortcut icon" href="assetsimages/favicon.png"><![endif]-->
-    <link rel="icon" type="image/png" href="{{ url('images/favicon.ico') }}">
+    <!--[if IE]><link rel="shortcut icon" href="{{ Vite::asset('resources/images/favicon.png') }}"><![endif]-->
+    <link rel="icon" type="image/png" href="{{ Vite::asset('resources/images/favicon.ico') }}">
 </head>
 
 <body>
@@ -110,7 +110,7 @@
                                         class="fa-brands fa-facebook"></i></a></li>
                             <li><a href="https://www.instagram.com/hind_sagar_biswas/" class="social-link"><i
                                         class="fa-brands fa-instagram"></i></a></li>
-                            <li><a href="mailto:hindsbhk@outlook.com" class="social-link"><i
+                            <li><a href="mailto:me@hindbiswas.com" class="social-link"><i
                                         class="fa-solid fa-envelope"></i></a></li>
                         </ul>
                         <div class="divider"></div>
@@ -175,7 +175,7 @@
                     class="hero d-flex flex-column justify-content-center align-items-center p-md-3 pt-3 pb-3">
                     <section class="hero-content">
                         <h2 class="text-uppercase"><i class="fa-solid fa-terminal"></i> Contact Me</h2>
-                        <pre class="cmd"><span class="text-warning">&gt;</span> <a href="mailto:hindsbhk@outlook.com" class="text-decoration-none d-inline text-info">hindsbhk@outlook.com</a></pre>
+                        <pre class="cmd"><span class="text-warning">&gt;</span> <a href="mailto:me@hindbiswas.com" class="text-decoration-none d-inline text-info">me@hindbiswas.com</a></pre>
                         <form @auth action="{{ route('contact') }}" method="POST" @endauth>
                             @auth
                                 @csrf
@@ -228,7 +228,7 @@
                                         class="fa-brands fa-facebook"></i></a>
                                 <a href="https://www.instagram.com/hind_sagar_biswas/" class="scroll-target"><i
                                         class="fa-brands fa-instagram"></i></a>
-                                <a href="mailto:hindsbhk@outlook.com" class="scroll-target"><i
+                                <a href="mailto:me@hindbiswas.com" class="scroll-target"><i
                                         class="fa-solid fa-solid fa-envelope"></i></a>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
                         <div class="moving-layers layer-2"></div>
                         <div class="moving-layers layer-3"></div>
                         <div class="moving-layers layer-4"></div>
-                        <img src="{{ url('images/hind-biswas.png') }}" alt="Hind Sagar Biswas">
+                        <img src="{{ Vite::asset('resources/images/hind-biswas.webp') }}" alt="Hind Sagar Biswas">
                     </div>
                 </div>
             </div>

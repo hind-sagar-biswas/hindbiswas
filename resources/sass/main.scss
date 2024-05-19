@@ -5,6 +5,9 @@ $social_links: 4;
 
 @use "sass:math";
 
+@import "~bs/scss/bootstrap";
+
+
 @import "variables";
 @import "mixins";
 @import "carousal";
