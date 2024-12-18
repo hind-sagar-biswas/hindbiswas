@@ -21,9 +21,10 @@ class LearnableSeeder extends Seeder
             'py' => ['icon' => ["fa-brands", "fa-python"], 'name' => "Python", 'level' => 5],
             'php' => ['icon' => ["fa-brands", "fa-php"], 'name' => "PHP 8", 'level' => 5],
             'mysql' => ['icon' => ["fa-solid", "fa-database"], 'name' => "MySQL", 'level' => 5],
+            'sqlite' => ['icon' => ["fa-solid", "fa-database"], 'name' => "SQLite", 'level' => 5],
             'node' => ['icon' => ["fa-brands", "fa-node-js"], 'name' => "NodeJS", 'level' => 5],
             'c' => ['icon' => ["fa-solid", "fa-file-code"], 'name' => "C", 'level' => 4],
-            'cpp' => ['icon' => ["fa-solid", "fa-file-code"], 'name' => "C++", 'level' => 3],
+            'cpp' => ['icon' => ["fa-solid", "fa-file-code"], 'name' => "C++", 'level' => 4],
             'rust' => ['icon' => ["fa-brands", "fa-rust"], 'name' => "Rust", 'level' => 2],
             'lua' => ['icon' => ["fa-solid", "fa-microchip"], 'name' => "Lua", 'level' => 4],
         ];
@@ -33,8 +34,9 @@ class LearnableSeeder extends Seeder
             'django' => ['icon' => ["fa-brands", "fa-python"], 'name' => "Django", 'level' => 4],
             'uikit' => ['icon' => ["fa-brands", "fa-uikit"], 'name' => "UiKit", 'level' => 5],
             'bs' => ['icon' => ["fa-brands", "fa-bootstrap"], 'name' => "Bootstrap", 'level' => 5],
+            'vue' => ['icon' => ["fa-brands", "fa-vuejs"], 'name' => "Vue", 'level' => 5],
             'react' => ['icon' => ["fa-brands", "fa-react"], 'name' => "React", 'level' => 2],
-            'reactNative' => ['icon' => ["fa-brands", "fa-react"], 'name' => "React Native", 'level' => 2],
+            'reactNative' => ['icon' => ["fa-brands", "fa-react"], 'name' => "React Native", 'level' => 3],
             'nextJs' => ['icon' => ["fa-brands", "fa-node-js"], 'name' => "Next JS", 'level' => 2],
             'tailwind' => ['icon' => ["fa-brands", "fa-tailwind"], 'name' => "Tailwind", 'level' => 5],
         ];
