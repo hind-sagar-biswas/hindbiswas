@@ -25,6 +25,7 @@ class LearnableSeeder extends Seeder
             'c' => ['icon' => ["fa-solid", "fa-file-code"], 'name' => "C", 'level' => 4],
             'cpp' => ['icon' => ["fa-solid", "fa-file-code"], 'name' => "C++", 'level' => 3],
             'rust' => ['icon' => ["fa-brands", "fa-rust"], 'name' => "Rust", 'level' => 2],
+            'lua' => ['icon' => ["fa-solid", "fa-microchip"], 'name' => "Lua", 'level' => 4],
         ];
 
         $frameworks = [
